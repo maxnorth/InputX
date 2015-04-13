@@ -16,7 +16,7 @@ public class InputX : MonoBehaviour
 	[Flags] private enum AxisState : byte {NotPressed = 0, Pressed = 1, PressedLastFrame = 2, Up = 4, Down = 8, Trigger = 128}
 	
 	//script management
-	private static int axisCodeCount = Enum.GetNames(typeof(AxisCode)).Length;
+	private static int axisCodeCount = Enum.GetNames(typeof(AxisCode)).Length; 
 	private static int firstAxisCodeValue = ((int[])Enum.GetValues (typeof(AxisCode)))[0];
 	private static AxisState[] axisStates;
 	private static float[] axisValues;
@@ -502,8 +502,8 @@ public class InputX : MonoBehaviour
 	{
 		for (int i = 0; i < axisCodeCount; i++)
 			axisStates[i] &= ~AxisState.Trigger;
-		for (int i = 0; i < settings.taggedTriggerAxes.Length; i++)
-			axisStates[((int)settings.taggedTriggerAxes[i]) - firstAxisCodeValue] |= AxisState.Trigger;
+		for (int i = 0; i < settings.triggers.Length; i++)
+			axisStates[((int)settings.triggers[i]) - firstAxisCodeValue] |= AxisState.Trigger;
 
 		if (settings.updateTriggerAxes)
 			Debug.Log ("InputX has updated the trigger axes.");
@@ -596,7 +596,8 @@ public class InputX : MonoBehaviour
 		         "light pressure, and scale upward towards 1. This means 0 can alternately represent either a middle value or a zero value (no input). " +
 		         "By adding an AxisCode member to this list, the script will resolve these problems and return readings of that axis in a range of 0 to 1 " +
 		         "when the InputX.Axis() method is used.")]
-		public AxisCode[] taggedTriggerAxes;
+
+		public AxisCode[] triggers;
 
 		private Settings()
 		{

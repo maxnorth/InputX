@@ -70,6 +70,7 @@ public enum InputCode
 	Num5 = KeyCode.Alpha5, Num6 = KeyCode.Alpha6, Num7 = KeyCode.Alpha7, Num8 = KeyCode.Alpha8 , Num9 = KeyCode.Alpha9, 
 	
 	#if UNITY_EDITOR_WIN || !UNITY_EDITOR
+	//Define WinXbox inputs here
 	WinXboxButtonA = KeyCode.JoystickButton0, WinXboxButtonB = KeyCode.JoystickButton1, WinXboxButtonX = KeyCode.JoystickButton2, 
 	WinXboxButtonY = KeyCode.JoystickButton3, WinXboxLeftBumper = KeyCode.JoystickButton4, WinXboxRightBumper = KeyCode.JoystickButton5, 
 	WinXboxBackButton = KeyCode.JoystickButton6, WinXboxStartButton = KeyCode.JoystickButton7, 
