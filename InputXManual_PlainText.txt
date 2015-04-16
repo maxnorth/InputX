@@ -180,7 +180,7 @@ Log debug warnings
 Track Axis States
 
 	This is the functionality of keeping track of states for each axis defined in the AxisCode enum, which allows you to check Up and Down events for axes. When deactivated, these methods will always return false.
-Tracking Axis States is also responsible for translating the triggers included in the TaggedTriggerAxes array. When turned off, all axes will be interpreted normally. More on Tagged Trigger Axes just below.
+Tracking Axis States is also responsible for translating the triggers included in the “triggers” array. When turned off, all axes will be interpreted normally. More on Triggers in InputX just below.
 
 
 Global Timed Input
@@ -193,15 +193,15 @@ Timed Input Default
 	This float specifies the default common tap limit and hold threshold for all instances of TimedInput assigned using one of the constructor overloads that does not include a float parameter. More on constructing new instances of TimedInput here.
 
 
-Tagged Trigger Axes
+Triggers
 
-	The "tagged" here simply means that by adding members of AxisCode to this array, you are telling InputX to give it special treatment as a trigger, and to translate it's values to a new scale of 0 to 1 (compared to typical scale of -1 to 1).
-Just because you have a gamepad with triggers does not mean that this feature is appropriate for them. For example, some gamepads divide a single axis between both triggers, so that the left axis returns values between -1 and 0, while the right returns values between 0 and 1. Tagging this divided axis as a trigger would be unhelpful here, because the triggers are already in the proper range (though there are problems of their own with this set up). The ideal use for tagging an axis as a trigger is when Unity assigns an entire axis scale of -1 to 1 to your trigger. Look online to find out how your controller's axes are mapped.
+	By adding members of AxisCode to this array, you are telling InputX to give it special treatment as a trigger, and to translate it's values to a new scale of 0 to 1 (compared to typical scale of -1 to 1).
+Just because you have a gamepad with triggers does not mean that this feature is appropriate for them. For example, some gamepads divide a single axis between both triggers, so that the left axis returns values between -1 and 0, while the right returns values between 0 and 1. Flagging this divided axis as a trigger would be unhelpful here, because the triggers are already in the proper range (though there are problems of their own with this set up). The ideal use for flagging an axis as a trigger is when Unity assigns an entire axis scale of -1 to 1 to your trigger. Look online to find out how your controller's axes are mapped.
 
-Note: The most important reason for tagging an axis as a trigger is not just to do a trivial translation of scale. It also handles a bug involving the way that Unity reads these axes. The engine has difficulty distinguishing between zero pressure on the trigger, and exactly half pressure on the trigger. When not pressed, the axis reads 0. When pressed slightly, it shoots down to -1, and increases with pressure up to 1 (through 0 again). When released, it will stay at -1 for a time, but may return back to 0 erratically if not pressed for a while. InputX's treatment of triggers manages this problem and guarantees predictable axis readings for triggers.
+Note: The most important reason for flagging an axis as a trigger is not just to do a trivial translation of scale. It also handles a bug involving the way that Unity reads these axes. The engine has difficulty distinguishing between zero pressure on the trigger, and exactly half pressure on the trigger. When not pressed, the axis reads 0. When pressed slightly, it shoots down to -1, and increases with pressure up to 1 (through 0 again). When released, it will stay at -1 for a time, but may return back to 0 erratically if not pressed for a while. InputX's treatment of triggers manages this problem and guarantees predictable axis readings for triggers.
 
 
 Update Trigger Axes
 
-	Checking this bool informs InputX that the triggers in the taggedTriggerAxes array have been changed, so that it can perform the necessary modifications. As soon as the update is performed, the bool is set back to false.
+	Checking this bool informs InputX that the triggers in the “triggers” array have been changed, so that it can perform the necessary modifications. As soon as the update is performed, the bool is set back to false.
 Note: The bool primarily acts as a way to update the known triggers in a convenient way from the inspector, mostly for debugging. InputX also contains a public static method called UpdateTriggerAxes( ) that can be called from your scripts if needed.
