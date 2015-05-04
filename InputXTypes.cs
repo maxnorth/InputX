@@ -71,10 +71,14 @@ public enum InputCode
 	
 	#if UNITY_EDITOR_WIN || !UNITY_EDITOR
 	//Define WinXbox inputs here
-	WinXboxButtonA = KeyCode.JoystickButton0, WinXboxButtonB = KeyCode.JoystickButton1, WinXboxButtonX = KeyCode.JoystickButton2, 
-	WinXboxButtonY = KeyCode.JoystickButton3, WinXboxLeftBumper = KeyCode.JoystickButton4, WinXboxRightBumper = KeyCode.JoystickButton5, 
-	WinXboxBackButton = KeyCode.JoystickButton6, WinXboxStartButton = KeyCode.JoystickButton7, 
-	WinXboxLeftStickClick = KeyCode.JoystickButton8, WinXboxRightStickClick = KeyCode.JoystickButton9,
+	XboxButtonA = KeyCode.JoystickButton0, XboxButtonB = KeyCode.JoystickButton1, XboxButtonX = KeyCode.JoystickButton2, 
+	XboxButtonY = KeyCode.JoystickButton3, XboxLeftBumper = KeyCode.JoystickButton4, XboxRightBumper = KeyCode.JoystickButton5, 
+	XboxBackButton = KeyCode.JoystickButton6, XboxStartButton = KeyCode.JoystickButton7, 
+	XboxLeftStickClick = KeyCode.JoystickButton8, XboxRightStickClick = KeyCode.JoystickButton9,
+
+    XboxLeftTrigger = AxisCode.Joystick3, XboxRightTrigger = AxisCode.Joystick3, XboxLeftStickX = AxisCode.JoystickX, 
+    XboxRightStickX = AxisCode.Joystick4, XboxLeftStickY = AxisCode.JoystickY, XboxRightStickY = AxisCode.Joystick5,
+    XboxInvertedRightStickY = AxisCode.NegJoystick4,
 	#endif
 	
 	#if UNITY_EDITOR_OSX || !UNITY_EDITOR
